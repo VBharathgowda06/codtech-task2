@@ -21,3 +21,4 @@ The goal is to fit a line that best predicts the target variable (y) given the f
 
 
 
+![Screenshot 2024-10-08 112114](https://github.com/user-attachments/assets/127d66e7-c976-45c9-bf26-82125414e309)
