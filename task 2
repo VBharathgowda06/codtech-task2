@@ -1,0 +1,42 @@
+# Importing necessary libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Step 1: Generating a synthetic dataset
+np.random.seed(42)
+# Generate 100 random values for X
+X = np.random.rand(100, 1) * 10  # Features
+# Create the target variable with some added noise
+y = 3 * X + np.random.randn(100, 1) * 2  # Target
+
+# Step 2: Splitting the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Step 3: Creating and training the linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Step 4: Making predictions on the test set
+y_pred = model.predict(X_test)
+
+# Step 5: Evaluating the model
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f"Mean Squared Error: {mse}")
+print(f"R-squared: {r2}")
+
+# Step 6: Visualizing the regression line and actual vs predicted values
+plt.scatter(X_test, y_test, color='blue', label='Actual')
+plt.plot(X_test, y_pred, color='red', label='Predicted')
+
+plt.title("Actual vs Predicted Values")
+plt.xlabel("X")
+plt.ylabel("y")
+plt.legend()
+plt.show()
+
